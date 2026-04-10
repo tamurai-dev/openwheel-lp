@@ -22,9 +22,10 @@ export const ja = {
     steps: [
       "サイトを解析中…",
       "知識ベースを構築中…",
-      "AIエージェントを生成中…",
-      "完了！エージェントが稼働を開始しました",
+      "埋め込みスクリプトを生成中…",
     ],
+    stepDone: "サイトに貼るだけ。準備完了。",
+    snippet: '<script src="https://cdn.openwheel.ai/widget/agent-xxxxx.js" async></script>',
     cta: "GitHub で始める",
   },
   nav: {

@@ -22,9 +22,10 @@ export const en = {
     steps: [
       "Analyzing your site…",
       "Building knowledge base…",
-      "Generating AI agent…",
-      "Done! Your agent is live.",
+      "Generating embed script…",
     ],
+    stepDone: "Just paste it. You're ready.",
+    snippet: '<script src="https://cdn.openwheel.ai/widget/agent-xxxxx.js" async></script>',
     cta: "Get started on GitHub",
   },
   nav: {

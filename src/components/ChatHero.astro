@@ -82,7 +82,6 @@ const isJa = t.lang === "ja";
           <div
             class="chat-step flex items-center gap-3 text-[14px] text-mute opacity-0"
             data-index={i}
-            data-final={i === t.chat.steps.length - 1 ? "true" : "false"}
           >
             <span class="chat-step-icon w-5 h-5 flex items-center justify-center flex-shrink-0">
               <span class="chat-spinner w-4 h-4 rounded-full border-2 border-mute border-t-fg inline-block"></span>
@@ -91,10 +90,19 @@ const isJa = t.lang === "ja";
           </div>
         ))}
       </div>
+      <div id="chat-result" class="mt-6 opacity-0">
+        <div class="flex items-center gap-2 text-[14px] text-status font-semibold mb-3">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {t.chat.stepDone}
+        </div>
+        <div class="bg-white border border-rule text-fg text-[13px] font-mono px-4 py-3 rounded-lg overflow-x-auto">
+          <code>{t.chat.snippet}</code>
+        </div>
+      </div>
       <a
         id="chat-cta"
         href="https://github.com/tamurai/openwheel"
-        class="inline-block mt-8 text-[13px] font-semibold tracking-wide border-b border-fg pb-0.5 hover:text-mute hover:border-mute transition-colors opacity-0"
+        class="inline-block mt-6 text-[13px] font-semibold tracking-wide border-b border-fg pb-0.5 hover:text-mute hover:border-mute transition-colors opacity-0"
       >
         {t.chat.cta}
       </a>
@@ -229,30 +237,22 @@ const isJa = t.lang === "ja";
 
     for (let i = 0; i < stepEls.length; i++) {
       const el = stepEls[i] as HTMLElement;
-      const isFinal = el.dataset.final === "true";
       const spinner = el.querySelector(".chat-spinner") as HTMLElement;
 
       el.style.animation = "fadeSlideIn 0.4s ease both";
-
-      if (!isFinal) {
-        spinner.style.animation = "spinLoader 0.6s linear infinite";
-        await sleep(1200);
-        spinner.style.animation = "none";
-        spinner.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-        spinner.classList.remove("border-2", "border-mute", "border-t-fg", "rounded-full");
-        el.classList.remove("text-mute");
-        el.classList.add("text-fg");
-        await sleep(300);
-      } else {
-        spinner.style.animation = "none";
-        spinner.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 4" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-        spinner.classList.remove("border-2", "border-mute", "border-t-fg", "rounded-full");
-        el.classList.remove("text-mute");
-        el.classList.add("text-fg", "font-semibold");
-        await sleep(500);
-      }
+      spinner.style.animation = "spinLoader 0.6s linear infinite";
+      await sleep(1200);
+      spinner.style.animation = "none";
+      spinner.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      spinner.classList.remove("border-2", "border-mute", "border-t-fg", "rounded-full");
+      el.classList.remove("text-mute");
+      el.classList.add("text-fg");
+      await sleep(300);
     }
 
-    cta.style.animation = "fadeSlideIn 0.5s ease 0.2s both";
+    const result = document.getElementById("chat-result")!;
+    result.style.animation = "fadeSlideIn 0.5s ease both";
+    await sleep(600);
+    cta.style.animation = "fadeSlideIn 0.5s ease both";
   }
 </script>
