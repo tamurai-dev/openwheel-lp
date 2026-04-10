@@ -11,22 +11,14 @@ export const ja = {
     line1: "言葉が、",
     line2: "エージェントになる。",
     description:
-      "解決したい課題を書く。あとはOpenWheelが、本番で動くAIエージェントを生成する。",
+      "課題を書くだけ。OpenWheelが、本番で動くAIエージェントを生成する。",
     cta: "GitHub で始める",
   },
   demo: {
-    inputLabel: "あなたが書くこと",
-    inputLines: [
-      "顧客サポートを自動化したい。",
-      "メールとチャットに24時間対応する。",
-      "返金は人間が承認する。",
-      "顧客データは外部に出さない。",
-    ],
-    outputLabel: "OpenWheelが生成するもの",
-    outputLines: [
-      "3つのエージェント——問い合わせ分類、FAQ応答、エスカレーション処理。",
-      "ツール、権限、制約を自動定義。Claude Managed Agentsに即デプロイ可能。",
-    ],
+    label: "How it works",
+    placeholder: "Demo video coming soon",
+    caption:
+      "課題を書く → OpenWheelが解析 → エージェント定義を自動生成 → CMAにデプロイ。コード不要。",
   },
   problem: {
     lead: "AIエージェントのプロトタイプは、もう誰でも作れる。",
@@ -54,24 +46,6 @@ export const ja = {
     quote:
       "数ヶ月ではなく、数週間で本番環境にデプロイできた",
     quoteAuthor: "— Sentry, Senior Director of Engineering",
-  },
-  bridge: {
-    label: "The Bridge",
-    title: "OpenWheelが、その間を埋める。",
-    description:
-      "あなたが書いた課題を解析し、CMAが理解できるエージェント定義を自動生成する。コードは不要。",
-    step1num: "01",
-    step1: "宣言",
-    step1detail: "INTENT.md に、解決したい課題をそのまま書く。",
-    step2num: "02",
-    step2: "分解",
-    step2detail: "意図を個別のエージェント仕様に分解する。",
-    step3num: "03",
-    step3: "設計",
-    step3detail: "各エージェントのツール、権限、制約を推論する。",
-    step4num: "04",
-    step4: "生成",
-    step4detail: "CMA対応のAPI定義を出力し、即座にデプロイ可能にする。",
   },
   proof: {
     label: "Example Scenario",

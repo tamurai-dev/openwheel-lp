@@ -11,22 +11,14 @@ export const en = {
     line1: "Words become",
     line2: "agents.",
     description:
-      "Describe the problem you want to solve. OpenWheel generates production AI agents from it.",
+      "Write the problem. OpenWheel generates production AI agents.",
     cta: "Get started on GitHub",
   },
   demo: {
-    inputLabel: "You write",
-    inputLines: [
-      "Automate customer support.",
-      "Handle email and chat inquiries 24/7.",
-      "Refunds require human approval.",
-      "Never expose customer data externally.",
-    ],
-    outputLabel: "OpenWheel generates",
-    outputLines: [
-      "3 agents — inquiry routing, FAQ response, escalation handling.",
-      "Tools, permissions, and constraints auto-defined. Ready to deploy on CMA.",
-    ],
+    label: "How it works",
+    placeholder: "Demo video coming soon",
+    caption:
+      "Write your problem → OpenWheel analyzes → auto-generates agent definitions → deploy to CMA. No code.",
   },
   problem: {
     lead: "Anyone can prototype an AI agent now.",
@@ -54,24 +46,6 @@ export const en = {
     quote:
       "Managed Agents allowed us to deploy in weeks instead of months",
     quoteAuthor: "— Sentry, Senior Director of Engineering",
-  },
-  bridge: {
-    label: "The Bridge",
-    title: "OpenWheel fills the gap.",
-    description:
-      "It parses your intent declaration and generates API definitions that Claude Managed Agents can understand. No code required.",
-    step1num: "01",
-    step1: "Declare",
-    step1detail: "Write what you want to solve in INTENT.md, in plain language.",
-    step2num: "02",
-    step2: "Decompose",
-    step2detail: "Intent is broken down into individual agent specifications.",
-    step3num: "03",
-    step3: "Design",
-    step3detail: "Tools, permissions, and constraints are inferred for each agent.",
-    step4num: "04",
-    step4: "Generate",
-    step4detail: "CMA-compatible API definitions are output, ready to deploy.",
   },
   proof: {
     label: "Example Scenario",
