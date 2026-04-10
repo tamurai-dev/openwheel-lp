@@ -2,7 +2,8 @@ export const ja = {
   lang: "ja",
   dir: "ltr",
   chat: {
-    heading: "あなたのサイトを、AIエージェントに。",
+    heading: "あなたのサイトに、エージェントを。",
+    heading2: "あなたの業務に、エージェントを。",
     placeholder: "サイトのURLを入力してください",
     placeholders: [
       "ECサイトの問い合わせを自動化したい",

@@ -2,7 +2,8 @@ export const en = {
   lang: "en",
   dir: "ltr",
   chat: {
-    heading: "Turn your site into an AI agent.",
+    heading: "Bring an agent to your site.",
+    heading2: "Bring an agent to your workflow.",
     placeholder: "Enter your site URL",
     placeholders: [
       "Automate customer support for my e-commerce site",
