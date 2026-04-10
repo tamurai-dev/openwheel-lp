@@ -2,6 +2,7 @@
 interface Props { t: any; }
 const { t } = Astro.props;
 const placeholders: string[] = t.chat.placeholders;
+const isJa = t.lang === "ja";
 ---
 <section
   id="chat-hero"
@@ -9,7 +10,7 @@ const placeholders: string[] = t.chat.placeholders;
 >
   <div class="w-full max-w-[640px] flex flex-col items-center">
     <h2
-      class="font-display font-800 text-fg text-center text-[clamp(1.6rem,4.5vw,2.6rem)] leading-[1.15] tracking-[-0.02em] mb-10 hero-in"
+      class={`font-display font-800 text-fg text-center leading-[1.15] tracking-[-0.02em] mb-10 hero-in ${isJa ? "text-[clamp(1.4rem,3.8vw,2.2rem)]" : "text-[clamp(1.6rem,4.5vw,2.6rem)]"}`}
     >
       {t.chat.heading}
     </h2>
