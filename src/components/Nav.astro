@@ -1,0 +1,15 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+---
+<nav class="fixed top-0 left-0 w-full z-50 mix-blend-difference">
+  <div class="max-w-[1120px] mx-auto flex items-center justify-between px-6 py-5">
+    <a href={`/${t.lang}/`} class="text-white text-[13px] font-semibold tracking-wider">
+      OpenWheel
+    </a>
+    <div class="flex items-center gap-5 text-[12px] text-white/60 tracking-wide">
+      <a href="https://github.com/tamurai/openwheel" class="hover:text-white transition-colors">{t.nav.github}</a>
+      <a href={t.nav.langSwitchHref} class="hover:text-white transition-colors">{t.nav.langSwitch}</a>
+    </div>
+  </div>
+</nav>

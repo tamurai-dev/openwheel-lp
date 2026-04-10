@@ -1,0 +1,37 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+---
+<section class="py-32 md:py-44 px-6 bg-surface text-on-surface">
+  <div class="max-w-[1120px] mx-auto">
+    <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-on-surface/40 mb-10 reveal">{t.platform.label}</p>
+    <h2 class="font-display font-800 text-[clamp(2.5rem,7vw,5rem)] leading-[0.95] tracking-tight reveal d1">
+      {t.platform.title}
+    </h2>
+    <p class="text-on-surface/50 text-[15px] leading-relaxed max-w-[520px] mt-8 reveal d2">
+      {t.platform.description}
+    </p>
+
+    <div class="grid grid-cols-3 mt-24 border-t border-on-surface/10 reveal d3">
+      <div class="pt-8 pr-6">
+        <p class="font-display font-800 text-[clamp(2rem,4.5vw,3.5rem)] leading-none tracking-tight">{t.platform.stat1value}</p>
+        <p class="text-on-surface/35 text-[12px] mt-2 tracking-wide">{t.platform.stat1label}</p>
+      </div>
+      <div class="pt-8 px-6 border-l border-on-surface/10">
+        <p class="font-display font-800 text-[clamp(2rem,4.5vw,3.5rem)] leading-none tracking-tight">{t.platform.stat2value}</p>
+        <p class="text-on-surface/35 text-[12px] mt-2 tracking-wide">{t.platform.stat2label}</p>
+      </div>
+      <div class="pt-8 pl-6 border-l border-on-surface/10">
+        <p class="font-display font-800 text-[clamp(2rem,4.5vw,3.5rem)] leading-none tracking-tight">{t.platform.stat3value}</p>
+        <p class="text-on-surface/35 text-[12px] mt-2 tracking-wide">{t.platform.stat3label}</p>
+      </div>
+    </div>
+
+    <p class="text-on-surface/25 text-[12px] tracking-[.15em] mt-20 reveal d3">{t.platform.adopters}</p>
+
+    <div class="mt-16 border-l border-on-surface/20 pl-6 reveal d4">
+      <p class="text-on-surface/60 text-[15px] leading-relaxed italic">{t.platform.quote}</p>
+      <p class="text-on-surface/30 text-[12px] mt-3">{t.platform.quoteAuthor}</p>
+    </div>
+  </div>
+</section>

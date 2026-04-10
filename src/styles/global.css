@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #FAFAF7;
+  --color-fg: #0D0D0D;
+  --color-mute: #999999;
+  --color-rule: #E0DEDA;
+  --color-surface: #0D0D0D;
+  --color-on-surface: #FAFAF7;
+  --color-status: #22C55E;
+
+  --font-display: "Sora", "Noto Sans JP", system-ui, sans-serif;
+  --font-body: "Sora", "Noto Sans JP", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    font-family: var(--font-body);
+    color: var(--color-fg);
+    background: var(--color-bg);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 400;
+  }
+  ::selection {
+    background: var(--color-fg);
+    color: var(--color-bg);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(.22,.61,.36,1),
+              transform 0.7s cubic-bezier(.22,.61,.36,1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.d1 { transition-delay: 100ms; }
+.d2 { transition-delay: 200ms; }
+.d3 { transition-delay: 300ms; }
+.d4 { transition-delay: 400ms; }
+
+.hero-in {
+  animation: heroIn 0.8s cubic-bezier(.22,.61,.36,1) both;
+}
+.hero-in-d1 { animation-delay: 0.1s; }
+.hero-in-d2 { animation-delay: 0.25s; }
+.hero-in-d3 { animation-delay: 0.4s; }
+.hero-in-d4 { animation-delay: 0.55s; }
+
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 1; }
+  50%     { opacity: .3; }
+}

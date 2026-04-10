@@ -1,0 +1,14 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+---
+<footer class="border-t border-rule py-8 px-6">
+  <div class="max-w-[1120px] mx-auto flex items-center justify-between text-[12px] text-mute tracking-wide">
+    <span>{t.footer.copy}</span>
+    <div class="flex items-center gap-5">
+      <a href="https://docs.anthropic.com/en/docs/agents/managed-agents" class="hover:text-fg transition-colors">{t.footer.docs}</a>
+      <a href="https://github.com/tamurai/openwheel" class="hover:text-fg transition-colors">{t.footer.github}</a>
+      <a href={t.nav.langSwitchHref} class="hover:text-fg transition-colors">{t.nav.langSwitch}</a>
+    </div>
+  </div>
+</footer>

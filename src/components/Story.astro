@@ -1,0 +1,32 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+---
+<section class="py-32 md:py-44 px-6 border-t border-rule">
+  <div class="max-w-[1120px] mx-auto">
+    <div class="max-w-[600px]">
+      <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-10 reveal">{t.proof.label}</p>
+
+      <h2 class="font-display font-800 text-[clamp(2rem,5vw,3.5rem)] leading-tight tracking-tight reveal d1">
+        {t.proof.lead}
+      </h2>
+
+      <p class="text-mute text-[15px] leading-loose mt-8 reveal d2">
+        {t.proof.situation}
+      </p>
+
+      <p class="text-[15px] font-semibold mt-12 reveal d3">
+        {t.proof.action}
+      </p>
+
+      <div class="border-l-2 border-fg pl-5 mt-6 space-y-1 reveal d3">
+        <p class="text-[15px] leading-relaxed">{t.proof.quote1}</p>
+        <p class="text-[15px] leading-relaxed">{t.proof.quote2}</p>
+      </div>
+
+      <p class="text-[15px] leading-relaxed mt-12 reveal d4">
+        {t.proof.result}
+      </p>
+    </div>
+  </div>
+</section>

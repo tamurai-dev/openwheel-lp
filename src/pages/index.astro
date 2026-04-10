@@ -1,0 +1,33 @@
+---
+// Language detection redirector — lightweight page
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <title>OpenWheel — Redirecting…</title>
+    <script is:inline>
+      (function () {
+        var saved = localStorage.getItem("ow-lang");
+        if (saved === "ja" || saved === "en") {
+          location.replace("/" + saved + "/");
+          return;
+        }
+        var lang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+        if (lang.startsWith("ja")) {
+          location.replace("/ja/");
+        } else {
+          location.replace("/en/");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <p>Redirecting… <a href="/en/">English</a> | <a href="/ja/">日本語</a></p>
+    </noscript>
+  </body>
+</html>

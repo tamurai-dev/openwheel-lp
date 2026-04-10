@@ -1,0 +1,22 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+---
+<section class="min-h-[100svh] flex flex-col justify-end px-6 pb-20">
+  <div class="max-w-[1120px] mx-auto w-full">
+    <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-10 hero-in">{t.hero.label}</p>
+    <h1 class="font-display font-800 leading-[0.95] tracking-[-0.03em]">
+      <span class="block text-[clamp(3rem,8.5vw,7rem)] hero-in hero-in-d1">{t.hero.line1}</span>
+      <span class="block text-[clamp(3rem,8.5vw,7rem)] hero-in hero-in-d2">{t.hero.line2}</span>
+    </h1>
+    <p class="max-w-[480px] text-mute text-[15px] leading-relaxed mt-10 hero-in hero-in-d3">
+      {t.hero.description}
+    </p>
+    <a
+      href="https://github.com/tamurai/openwheel"
+      class="inline-block mt-8 text-[13px] font-semibold tracking-wide border-b border-fg pb-0.5 hover:text-mute hover:border-mute transition-colors hero-in hero-in-d4"
+    >
+      {t.hero.cta}
+    </a>
+  </div>
+</section>

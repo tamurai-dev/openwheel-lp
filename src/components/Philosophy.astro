@@ -1,0 +1,25 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+const items = [
+  { title: t.principles.p1title, body: t.principles.p1body },
+  { title: t.principles.p2title, body: t.principles.p2body },
+  { title: t.principles.p3title, body: t.principles.p3body },
+];
+---
+<section class="py-32 md:py-44 px-6 border-t border-rule">
+  <div class="max-w-[1120px] mx-auto">
+    <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-16 reveal">{t.principles.label}</p>
+
+    {items.map((item, i) => (
+      <div class={`grid md:grid-cols-[240px_1fr] gap-6 md:gap-16 ${i > 0 ? 'mt-14 pt-14 border-t border-rule' : ''} reveal ${i === 1 ? 'd1' : i === 2 ? 'd2' : ''}`}>
+        <h3 class="font-display font-700 text-[clamp(1.3rem,2.5vw,1.7rem)] tracking-tight">
+          {item.title}
+        </h3>
+        <p class="text-mute text-[15px] leading-relaxed">
+          {item.body}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>

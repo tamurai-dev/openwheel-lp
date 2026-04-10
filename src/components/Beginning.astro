@@ -1,0 +1,25 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+---
+<section class="py-32 md:py-48 px-6">
+  <div class="max-w-[1120px] mx-auto">
+    <h2 class="font-display font-800 text-[clamp(3rem,9vw,7rem)] leading-[0.95] tracking-tight reveal">
+      {t.cta.line}
+    </h2>
+    <div class="flex items-center gap-6 mt-10 reveal d1">
+      <a
+        href="https://github.com/tamurai/openwheel"
+        class="text-[13px] font-semibold tracking-wide border-b border-fg pb-0.5 hover:text-mute hover:border-mute transition-colors"
+      >
+        {t.cta.github}
+      </a>
+      <a
+        href="https://docs.anthropic.com/en/docs/agents/managed-agents"
+        class="text-[13px] tracking-wide text-mute hover:text-fg transition-colors"
+      >
+        {t.cta.docs}
+      </a>
+    </div>
+  </div>
+</section>

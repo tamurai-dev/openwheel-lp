@@ -1,0 +1,25 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+---
+<section class="py-32 md:py-44 px-6 border-t border-rule">
+  <div class="max-w-[1120px] mx-auto">
+    <p class="text-[clamp(1.5rem,3.5vw,2.25rem)] font-light leading-snug max-w-[640px] reveal">
+      {t.problem.lead}
+    </p>
+    <p class="text-[clamp(1.5rem,3.5vw,2.25rem)] font-semibold leading-snug max-w-[640px] mt-4 reveal d1">
+      {t.problem.but}
+    </p>
+
+    <p class="text-mute text-[14px] leading-loose max-w-[520px] mt-20 reveal d2">
+      {t.problem.items}
+    </p>
+
+    <div class="mt-24 flex flex-wrap items-baseline gap-x-2 reveal d3">
+      <span class="text-mute text-[15px]">{t.problem.punchPre}</span>
+      <span class="font-bold text-[15px]">{t.problem.punchHighlight}</span>
+      <span class="text-mute text-[15px]">{t.problem.punchPost}</span>
+      <span class="font-display font-800 text-[clamp(3rem,8vw,6rem)] leading-none tracking-tight">{t.problem.punchNumber}</span>
+    </div>
+  </div>
+</section>

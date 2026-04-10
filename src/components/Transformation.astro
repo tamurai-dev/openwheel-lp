@@ -1,0 +1,38 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+const steps = [
+  { num: t.bridge.step1num, name: t.bridge.step1, detail: t.bridge.step1detail },
+  { num: t.bridge.step2num, name: t.bridge.step2, detail: t.bridge.step2detail },
+  { num: t.bridge.step3num, name: t.bridge.step3, detail: t.bridge.step3detail },
+  { num: t.bridge.step4num, name: t.bridge.step4, detail: t.bridge.step4detail },
+];
+---
+<section class="py-32 md:py-44 px-6 border-t border-rule">
+  <div class="max-w-[1120px] mx-auto">
+    <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-10 reveal">{t.bridge.label}</p>
+    <h2 class="font-display font-800 text-[clamp(2rem,5vw,3.5rem)] leading-[1.05] tracking-tight max-w-[600px] reveal d1">
+      {t.bridge.title}
+    </h2>
+    <p class="text-mute text-[15px] leading-relaxed max-w-[480px] mt-6 reveal d2">
+      {t.bridge.description}
+    </p>
+
+    <div class="mt-24 space-y-0 reveal d3">
+      {steps.map((s, i) => (
+        <div class={`grid grid-cols-[60px_1fr] gap-4 py-6 ${i > 0 ? 'border-t border-rule' : ''}`}>
+          <span class="text-mute text-[12px] font-semibold tracking-wide pt-0.5">{s.num}</span>
+          <div>
+            <p class="font-display font-700 text-[clamp(1.1rem,2vw,1.4rem)]">{s.name}</p>
+            <p class="text-mute text-[14px] mt-1">{s.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 flex items-center gap-2.5 reveal d4">
+      <span class="inline-block w-[7px] h-[7px] rounded-full bg-status" style="animation: pulse 2s infinite"></span>
+      <span class="text-status text-[12px] font-semibold tracking-wide">Running</span>
+    </div>
+  </div>
+</section>
