@@ -1,6 +1,31 @@
 export const en = {
   lang: "en",
   dir: "ltr",
+  chat: {
+    heading: "Turn your site into an AI agent.",
+    placeholder: "Enter your site URL",
+    placeholders: [
+      "Automate customer support for my e-commerce site",
+      "Handle appointment booking for my dental clinic",
+      "Build an AI ordering assistant for my restaurant",
+      "Create a support agent for my SaaS product",
+      "Automate property viewing requests",
+    ],
+    chips: ["E-commerce", "Dental clinic", "Restaurant", "SaaS"],
+    chipUrls: [
+      "https://example-shop.com",
+      "https://dental-clinic.jp",
+      "https://restaurant-tokyo.jp",
+      "https://example-saas.io",
+    ],
+    steps: [
+      "Analyzing your site…",
+      "Building knowledge base…",
+      "Generating AI agent…",
+      "Done! Your agent is live.",
+    ],
+    cta: "Get started on GitHub",
+  },
   nav: {
     github: "GitHub",
     langSwitch: "JA",

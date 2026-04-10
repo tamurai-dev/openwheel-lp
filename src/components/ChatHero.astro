@@ -1,0 +1,245 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+const placeholders: string[] = t.chat.placeholders;
+---
+<section
+  id="chat-hero"
+  class="min-h-[100svh] flex flex-col items-center justify-center px-6"
+>
+  <div class="w-full max-w-[640px] flex flex-col items-center">
+    <h2
+      class="font-display font-800 text-fg text-center text-[clamp(1.6rem,4.5vw,2.6rem)] leading-[1.15] tracking-[-0.02em] mb-10 hero-in"
+    >
+      {t.chat.heading}
+    </h2>
+
+    <div
+      id="chat-input-wrap"
+      class="relative w-full bg-white border border-rule rounded-2xl shadow-sm hero-in hero-in-d1"
+    >
+      <div
+        id="rotating-placeholder"
+        class="absolute left-5 top-4 right-14 pointer-events-none overflow-hidden"
+        style="height:1.7em"
+        data-phrases={JSON.stringify(placeholders)}
+      >
+        <span
+          id="rotating-text"
+          class="block text-mute text-[15px] leading-[1.7] whitespace-nowrap overflow-hidden text-ellipsis transition-all duration-500 ease-[cubic-bezier(.4,0,.2,1)]"
+        >
+          {placeholders[0]}
+        </span>
+      </div>
+      <textarea
+        id="chat-input"
+        rows="3"
+        class="relative z-10 w-full resize-none bg-transparent text-fg text-[15px] leading-relaxed px-5 pt-4 pb-12 rounded-2xl focus:outline-none"
+      ></textarea>
+      <button
+        id="chat-submit"
+        type="button"
+        aria-label="Submit"
+        class="absolute z-10 right-3 bottom-3 w-8 h-8 flex items-center justify-center bg-fg text-bg rounded-full transition-opacity hover:opacity-80 disabled:opacity-30"
+        disabled
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 14V2M8 2L3 7M8 2l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div
+      id="chat-chips"
+      class="flex flex-wrap justify-center gap-2 mt-5 hero-in hero-in-d2"
+    >
+      {t.chat.chips.map((label: string, i: number) => (
+        <button
+          type="button"
+          class="chat-chip px-4 py-1.5 text-[13px] text-fg border border-rule rounded-full transition-colors hover:bg-fg hover:text-bg"
+          data-url={t.chat.chipUrls[i]}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+
+    <div id="chat-steps" class="w-full mt-8 hidden">
+      <div
+        id="chat-confirmed"
+        class="text-[14px] text-fg font-medium px-1 mb-4 opacity-0"
+      ></div>
+      <div id="chat-step-list" class="flex flex-col gap-3">
+        {t.chat.steps.map((step: string, i: number) => (
+          <div
+            class="chat-step flex items-center gap-3 text-[14px] text-mute opacity-0"
+            data-index={i}
+            data-final={i === t.chat.steps.length - 1 ? "true" : "false"}
+          >
+            <span class="chat-step-icon w-5 h-5 flex items-center justify-center flex-shrink-0">
+              <span class="chat-spinner w-4 h-4 rounded-full border-2 border-mute border-t-fg inline-block"></span>
+            </span>
+            <span>{step}</span>
+          </div>
+        ))}
+      </div>
+      <a
+        id="chat-cta"
+        href="https://github.com/tamurai/openwheel"
+        class="inline-block mt-8 text-[13px] font-semibold tracking-wide border-b border-fg pb-0.5 hover:text-mute hover:border-mute transition-colors opacity-0"
+      >
+        {t.chat.cta}
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const input = document.getElementById("chat-input") as HTMLTextAreaElement;
+  const submit = document.getElementById("chat-submit") as HTMLButtonElement;
+  const chips = document.querySelectorAll(".chat-chip");
+  const stepsWrap = document.getElementById("chat-steps")!;
+  const confirmed = document.getElementById("chat-confirmed")!;
+  const stepEls = document.querySelectorAll(".chat-step");
+  const cta = document.getElementById("chat-cta")!;
+  const inputWrap = document.getElementById("chat-input-wrap")!;
+  const chipsWrap = document.getElementById("chat-chips")!;
+  const phWrap = document.getElementById("rotating-placeholder")!;
+  const phText = document.getElementById("rotating-text")!;
+
+  let running = false;
+
+  // --- Rotating placeholder ---
+  const phrases: string[] = JSON.parse(phWrap.dataset.phrases || "[]");
+  let phIndex = 0;
+  let phTimer: ReturnType<typeof setInterval> | null = null;
+
+  function startRotation() {
+    if (phrases.length < 2) return;
+    phTimer = setInterval(() => {
+      phText.style.transition = "all 0.3s cubic-bezier(.4,0,.2,1)";
+      phText.style.transform = "translateY(-100%)";
+      phText.style.opacity = "0";
+
+      setTimeout(() => {
+        phIndex = (phIndex + 1) % phrases.length;
+        phText.textContent = phrases[phIndex];
+        phText.style.transition = "none";
+        phText.style.transform = "translateY(50%)";
+        phText.style.opacity = "0";
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            phText.style.transition = "all 0.3s cubic-bezier(.4,0,.2,1)";
+            phText.style.transform = "translateY(0)";
+            phText.style.opacity = "1";
+          });
+        });
+      }, 150);
+    }, 3000);
+  }
+
+  function stopRotation() {
+    if (phTimer) { clearInterval(phTimer); phTimer = null; }
+  }
+
+  function hidePlaceholder() {
+    phWrap.style.opacity = "0";
+    phWrap.style.transition = "opacity 0.2s";
+    stopRotation();
+  }
+
+  function showPlaceholder() {
+    if (!input.value) {
+      phWrap.style.opacity = "1";
+      startRotation();
+    }
+  }
+
+  startRotation();
+
+  input.addEventListener("focus", hidePlaceholder);
+  input.addEventListener("blur", showPlaceholder);
+  input.addEventListener("input", () => {
+    submit.disabled = input.value.trim().length === 0;
+    if (input.value) hidePlaceholder();
+    else showPlaceholder();
+  });
+
+  submit.addEventListener("click", () => {
+    if (!running && input.value.trim()) runDemo(input.value.trim());
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      if (!running && input.value.trim()) runDemo(input.value.trim());
+    }
+  });
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const url = (chip as HTMLElement).dataset.url || "";
+      if (!running && url) {
+        input.value = url;
+        submit.disabled = false;
+        hidePlaceholder();
+        runDemo(url);
+      }
+    });
+  });
+
+  function sleep(ms: number) {
+    return new Promise((r) => setTimeout(r, ms));
+  }
+
+  async function runDemo(url: string) {
+    running = true;
+    stopRotation();
+
+    inputWrap.style.transition = "opacity 0.4s, transform 0.4s";
+    inputWrap.style.opacity = "0";
+    inputWrap.style.transform = "translateY(-8px)";
+    chipsWrap.style.transition = "opacity 0.3s";
+    chipsWrap.style.opacity = "0";
+
+    await sleep(400);
+    inputWrap.classList.add("hidden");
+    chipsWrap.classList.add("hidden");
+
+    stepsWrap.classList.remove("hidden");
+
+    confirmed.textContent = url;
+    confirmed.style.animation = "fadeSlideIn 0.4s ease both";
+
+    await sleep(600);
+
+    for (let i = 0; i < stepEls.length; i++) {
+      const el = stepEls[i] as HTMLElement;
+      const isFinal = el.dataset.final === "true";
+      const spinner = el.querySelector(".chat-spinner") as HTMLElement;
+
+      el.style.animation = "fadeSlideIn 0.4s ease both";
+
+      if (!isFinal) {
+        spinner.style.animation = "spinLoader 0.6s linear infinite";
+        await sleep(1200);
+        spinner.style.animation = "none";
+        spinner.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        spinner.classList.remove("border-2", "border-mute", "border-t-fg", "rounded-full");
+        el.classList.remove("text-mute");
+        el.classList.add("text-fg");
+        await sleep(300);
+      } else {
+        spinner.style.animation = "none";
+        spinner.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 4" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        spinner.classList.remove("border-2", "border-mute", "border-t-fg", "rounded-full");
+        el.classList.remove("text-mute");
+        el.classList.add("text-fg", "font-semibold");
+        await sleep(500);
+      }
+    }
+
+    cta.style.animation = "fadeSlideIn 0.5s ease 0.2s both";
+  }
+</script>

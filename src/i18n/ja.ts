@@ -1,6 +1,31 @@
 export const ja = {
   lang: "ja",
   dir: "ltr",
+  chat: {
+    heading: "あなたのサイトを、AIエージェントに。",
+    placeholder: "サイトのURLを入力してください",
+    placeholders: [
+      "ECサイトの問い合わせを自動化したい",
+      "歯科医院の予約管理を任せたい",
+      "レストランの注文受付をAIにしたい",
+      "SaaSのカスタマーサポートを構築したい",
+      "不動産の内見予約を自動化したい",
+    ],
+    chips: ["ECサイト", "歯科医院", "レストラン", "SaaS"],
+    chipUrls: [
+      "https://example-shop.com",
+      "https://dental-clinic.jp",
+      "https://restaurant-tokyo.jp",
+      "https://example-saas.io",
+    ],
+    steps: [
+      "サイトを解析中…",
+      "知識ベースを構築中…",
+      "AIエージェントを生成中…",
+      "完了！エージェントが稼働を開始しました",
+    ],
+    cta: "GitHub で始める",
+  },
   nav: {
     github: "GitHub",
     langSwitch: "EN",
