@@ -16,24 +16,8 @@ const placeholders: string[] = t.chat.placeholders;
 
     <div id="chat-hint" class="flex flex-col items-center mb-2 hero-in hero-in-d1">
       <p class="text-mute text-[13px] italic tracking-wide">{t.chat.hint}</p>
-      <svg width="20" height="28" viewBox="0 0 20 28" fill="none" class="mt-1.5 text-mute" stroke-width="1.5">
-        <defs>
-          <mask id="arrow-flow-mask" x="0" y="0" width="20" height="28" maskUnits="userSpaceOnUse">
-            <rect x="0" y="-10" width="20" height="12" fill="white">
-              <animate attributeName="y" values="-10;28" dur="1.5s" repeatCount="indefinite" />
-            </rect>
-          </mask>
-        </defs>
-        <g stroke-linecap="round" stroke-linejoin="round">
-          <g stroke="currentColor" opacity="0.3">
-            <path d="M10 4v16" />
-            <path d="M5 15l5 5 5-5" />
-          </g>
-          <g stroke="currentColor" mask="url(#arrow-flow-mask)">
-            <path d="M10 4v16" />
-            <path d="M5 15l5 5 5-5" />
-          </g>
-        </g>
+      <svg width="20" height="28" viewBox="0 0 20 28" fill="none" class="mt-1.5 text-mute">
+        <path d="M10 4v16M5 15l5 5 5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
 
