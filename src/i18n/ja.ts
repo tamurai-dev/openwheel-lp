@@ -11,6 +11,7 @@ export const ja = {
       "SaaSのカスタマーサポートを構築したい",
       "不動産の内見予約を自動化したい",
     ],
+    hint: "サイトのURLを入力してください",
     chips: ["ECサイト", "歯科医院", "レストラン", "SaaS"],
     chipUrls: [
       "https://example-shop.com",

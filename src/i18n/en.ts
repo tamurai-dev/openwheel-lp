@@ -11,6 +11,7 @@ export const en = {
       "Create a support agent for my SaaS product",
       "Automate property viewing requests",
     ],
+    hint: "Just paste your site URL",
     chips: ["E-commerce", "Dental clinic", "Restaurant", "SaaS"],
     chipUrls: [
       "https://example-shop.com",
