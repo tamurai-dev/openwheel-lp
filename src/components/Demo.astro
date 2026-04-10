@@ -1,0 +1,33 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+---
+<section class="py-32 md:py-44 px-6 border-t border-rule">
+  <div class="max-w-[1120px] mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 md:gap-24">
+
+      <div class="reveal">
+        <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-6">{t.demo.inputLabel}</p>
+        <div class="border-l-2 border-fg pl-5 space-y-1">
+          {t.demo.inputLines.map((line: string) => (
+            <p class="text-[clamp(1.05rem,1.8vw,1.25rem)] leading-relaxed">{line}</p>
+          ))}
+        </div>
+      </div>
+
+      <div class="reveal d2">
+        <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-6">{t.demo.outputLabel}</p>
+        <div class="space-y-2">
+          {t.demo.outputLines.map((line: string) => (
+            <p class="text-[clamp(1.05rem,1.8vw,1.25rem)] leading-relaxed text-mute">{line}</p>
+          ))}
+        </div>
+        <div class="mt-6 flex items-center gap-2.5">
+          <span class="inline-block w-[7px] h-[7px] rounded-full bg-status" style="animation: pulse 2s infinite"></span>
+          <span class="text-status text-[12px] font-semibold tracking-wide">Ready to deploy</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

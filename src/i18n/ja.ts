@@ -14,6 +14,20 @@ export const ja = {
       "解決したい課題を書く。あとはOpenWheelが、本番で動くAIエージェントを生成する。",
     cta: "GitHub で始める",
   },
+  demo: {
+    inputLabel: "あなたが書くこと",
+    inputLines: [
+      "顧客サポートを自動化したい。",
+      "メールとチャットに24時間対応する。",
+      "返金は人間が承認する。",
+      "顧客データは外部に出さない。",
+    ],
+    outputLabel: "OpenWheelが生成するもの",
+    outputLines: [
+      "3つのエージェント——問い合わせ分類、FAQ応答、エスカレーション処理。",
+      "ツール、権限、制約を自動定義。Claude Managed Agentsに即デプロイ可能。",
+    ],
+  },
   problem: {
     lead: "AIエージェントのプロトタイプは、もう誰でも作れる。",
     but: "だが、本番環境で動かし続けることは、まったく別の問題だ。",
@@ -27,6 +41,7 @@ export const ja = {
   platform: {
     label: "The Platform",
     title: "Claude Managed Agents",
+    relation: "CMAがエンジンなら、OpenWheelはハンドルだ。",
     description:
       "Anthropicが構築した、AIエージェントのためのマネージドインフラストラクチャ。サンドボックス、セッション、スケーリング、監視——すべてを引き受ける。",
     stat1value: "10x",
@@ -44,10 +59,10 @@ export const ja = {
     label: "The Bridge",
     title: "OpenWheelが、その間を埋める。",
     description:
-      "あなたの意図宣言を解析し、Claude Managed Agentsが理解できるAPI定義を自動生成する。コードを書く必要はない。",
+      "あなたが書いた課題を解析し、CMAが理解できるエージェント定義を自動生成する。コードは不要。",
     step1num: "01",
     step1: "宣言",
-    step1detail: "INTENT.md に、解決したい課題を自然言語で書く。",
+    step1detail: "INTENT.md に、解決したい課題をそのまま書く。",
     step2num: "02",
     step2: "分解",
     step2detail: "意図を個別のエージェント仕様に分解する。",
@@ -59,8 +74,9 @@ export const ja = {
     step4detail: "CMA対応のAPI定義を出力し、即座にデプロイ可能にする。",
   },
   proof: {
-    label: "Case",
+    label: "Example Scenario",
     lead: "ある歯科医院の話。",
+    disclaimer: "※ 想定されるユースケースを示した架空の事例です。",
     situation:
       "毎月、同じ6つの問題が繰り返されていた。予約の未取得。夜間の無応答。未払いの累積。放置されるレビュー。離脱する既存患者。遅いオンボーディング。",
     action: "院長が書いたのは、3行だった。",

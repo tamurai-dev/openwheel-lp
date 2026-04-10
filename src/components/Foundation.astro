@@ -8,7 +8,10 @@ const { t } = Astro.props;
     <h2 class="font-display font-800 text-[clamp(2.5rem,7vw,5rem)] leading-[0.95] tracking-tight reveal d1">
       {t.platform.title}
     </h2>
-    <p class="text-on-surface/50 text-[15px] leading-relaxed max-w-[520px] mt-8 reveal d2">
+    <p class="text-on-surface font-semibold text-[15px] mt-6 reveal d1">
+      {t.platform.relation}
+    </p>
+    <p class="text-on-surface/50 text-[15px] leading-relaxed max-w-[520px] mt-4 reveal d2">
       {t.platform.description}
     </p>
 

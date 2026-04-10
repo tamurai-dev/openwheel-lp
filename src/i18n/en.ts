@@ -14,6 +14,20 @@ export const en = {
       "Describe the problem you want to solve. OpenWheel generates production AI agents from it.",
     cta: "Get started on GitHub",
   },
+  demo: {
+    inputLabel: "You write",
+    inputLines: [
+      "Automate customer support.",
+      "Handle email and chat inquiries 24/7.",
+      "Refunds require human approval.",
+      "Never expose customer data externally.",
+    ],
+    outputLabel: "OpenWheel generates",
+    outputLines: [
+      "3 agents — inquiry routing, FAQ response, escalation handling.",
+      "Tools, permissions, and constraints auto-defined. Ready to deploy on CMA.",
+    ],
+  },
   problem: {
     lead: "Anyone can prototype an AI agent now.",
     but: "But keeping one running in production is an entirely different problem.",
@@ -27,6 +41,7 @@ export const en = {
   platform: {
     label: "The Platform",
     title: "Claude Managed Agents",
+    relation: "If CMA is the engine, OpenWheel is the steering wheel.",
     description:
       "Managed infrastructure for AI agents, built by Anthropic. Sandboxing, sessions, scaling, monitoring — all handled.",
     stat1value: "10x",
@@ -59,8 +74,9 @@ export const en = {
     step4detail: "CMA-compatible API definitions are output, ready to deploy.",
   },
   proof: {
-    label: "Case",
+    label: "Example Scenario",
     lead: "A dental clinic.",
+    disclaimer: "* A hypothetical use case illustrating what OpenWheel can do.",
     situation:
       "The same six problems every month. Missed appointments. Unanswered night calls. Piling invoices. Ignored reviews. Churning patients. Slow onboarding.",
     action: "The director wrote three lines.",
