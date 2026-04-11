@@ -12,11 +12,19 @@ const { t } = Astro.props;
     <p class="max-w-[480px] text-mute text-[15px] leading-relaxed mt-10 hero-in hero-in-d3">
       {t.hero.description}
     </p>
-    <a
-      href="https://github.com/tamurai/openwheel"
-      class="inline-block mt-8 text-[13px] font-semibold tracking-wide border-b border-fg pb-0.5 hover:text-mute hover:border-mute transition-colors hero-in hero-in-d4"
-    >
-      {t.hero.cta}
-    </a>
+    <div class="flex items-center gap-5 mt-8 hero-in hero-in-d4">
+      <a
+        href={t.hero.ctaContactHref}
+        class="inline-block text-[13px] font-semibold tracking-wide bg-fg text-bg px-5 py-2.5 rounded-full hover:opacity-80 transition-opacity"
+      >
+        {t.hero.ctaContact}
+      </a>
+      <a
+        href={t.hero.ctaHref}
+        class="inline-block text-[13px] tracking-wide text-mute hover:text-fg transition-colors"
+      >
+        {t.hero.cta} ↑
+      </a>
+    </div>
   </div>
 </section>

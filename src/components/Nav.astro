@@ -8,6 +8,7 @@ const { t } = Astro.props;
       OpenWheel
     </a>
     <div class="flex items-center gap-5 text-[12px] text-white/60 tracking-wide">
+      <a href={t.nav.contactHref} class="border border-white/70 text-white rounded-full px-4 py-1.5 hover:border-white hover:text-white transition-colors font-semibold">{t.nav.contact}</a>
       <a href="https://github.com/tamurai/openwheel" class="hover:text-white transition-colors">{t.nav.github}</a>
       <a href={t.nav.langSwitchHref} class="hover:text-white transition-colors">{t.nav.langSwitch}</a>
     </div>

@@ -1,42 +1,31 @@
 ---
 interface Props { t: any; }
 const { t } = Astro.props;
+
+const steps = [
+  { number: t.demo.step1number, title: t.demo.step1title, body: t.demo.step1body },
+  { number: t.demo.step2number, title: t.demo.step2title, body: t.demo.step2body },
+  { number: t.demo.step3number, title: t.demo.step3title, body: t.demo.step3body },
+];
 ---
-<section class="py-20 md:py-32 px-6">
+<section id="how-it-works" class="py-20 md:py-32 px-6 border-t border-rule">
   <div class="max-w-[960px] mx-auto">
-    <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-6 reveal">{t.demo.label}</p>
+    <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-16 reveal">{t.demo.label}</p>
 
-    <div class="relative aspect-video bg-surface rounded-sm overflow-hidden reveal d1">
-      <video
-        id="demo-video"
-        class="w-full h-full object-cover"
-        autoplay
-        muted
-        loop
-        playsinline
-        poster="/demo-poster.jpg"
-      >
-        <source src="/demo.mp4" type="video/mp4" />
-      </video>
-      <div id="demo-placeholder" class="absolute inset-0 flex flex-col items-center justify-center gap-4">
-        <div class="w-16 h-16 rounded-full border-2 border-on-surface/20 flex items-center justify-center">
-          <div class="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[16px] border-l-on-surface/30 ml-1"></div>
+    <div class="grid md:grid-cols-3 gap-0">
+      {steps.map((step, i) => (
+        <div class={`relative md:pr-12 ${i > 0 ? 'mt-12 md:mt-0 md:pl-12 md:border-l border-rule' : ''} reveal ${i === 1 ? 'd1' : i === 2 ? 'd2' : ''}`}>
+          <p class="font-display font-800 text-[clamp(2.5rem,5vw,4rem)] leading-none tracking-tight text-mute/20 select-none mb-6">
+            {step.number}
+          </p>
+          <h3 class="font-display font-700 text-[clamp(1.1rem,2vw,1.35rem)] tracking-tight leading-snug mb-3">
+            {step.title}
+          </h3>
+          <p class="text-mute text-[14px] leading-relaxed">
+            {step.body}
+          </p>
         </div>
-        <p class="text-on-surface/30 text-[13px] tracking-wide">{t.demo.placeholder}</p>
-      </div>
+      ))}
     </div>
-
-    <p class="text-mute text-[14px] mt-6 max-w-[520px] reveal d2">{t.demo.caption}</p>
   </div>
 </section>
-
-<script>
-  const video = document.getElementById('demo-video') as HTMLVideoElement;
-  const placeholder = document.getElementById('demo-placeholder');
-  if (video && placeholder) {
-    video.addEventListener('loadeddata', () => {
-      if (video.readyState >= 2) placeholder.style.display = 'none';
-    });
-    if (video.readyState >= 2) placeholder.style.display = 'none';
-  }
-</script>

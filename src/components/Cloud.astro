@@ -1,0 +1,36 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+
+const features = [
+  { title: t.cloud.f1title, body: t.cloud.f1body },
+  { title: t.cloud.f2title, body: t.cloud.f2body },
+  { title: t.cloud.f3title, body: t.cloud.f3body },
+  { title: t.cloud.f4title, body: t.cloud.f4body },
+  { title: t.cloud.f5title, body: t.cloud.f5body },
+];
+---
+<section class="py-32 md:py-44 px-6 border-t border-rule">
+  <div class="max-w-[1120px] mx-auto">
+    <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-10 reveal">{t.cloud.label}</p>
+    <h2 class="font-display font-800 text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-tight max-w-[640px] reveal d1">
+      {t.cloud.title}
+    </h2>
+    <p class="text-mute text-[15px] leading-relaxed mt-4 max-w-[480px] reveal d2">
+      {t.cloud.description}
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px mt-16 border border-rule bg-rule reveal d3">
+      {features.map((f, i) => (
+        <div class={`bg-bg px-8 py-8 ${i === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
+          <h3 class="font-display font-700 text-[15px] tracking-tight mb-3">
+            {f.title}
+          </h3>
+          <p class="text-mute text-[13px] leading-relaxed">
+            {f.body}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

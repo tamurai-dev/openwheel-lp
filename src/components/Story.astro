@@ -1,36 +1,34 @@
 ---
 interface Props { t: any; }
 const { t } = Astro.props;
+
+const cases = [
+  { industry: t.proof.c1industry, problem: t.proof.c1problem, result: t.proof.c1result },
+  { industry: t.proof.c2industry, problem: t.proof.c2problem, result: t.proof.c2result },
+  { industry: t.proof.c3industry, problem: t.proof.c3problem, result: t.proof.c3result },
+  { industry: t.proof.c4industry, problem: t.proof.c4problem, result: t.proof.c4result },
+];
 ---
 <section class="py-32 md:py-44 px-6 border-t border-rule">
   <div class="max-w-[1120px] mx-auto">
-    <div class="max-w-[600px]">
-      <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-10 reveal">{t.proof.label}</p>
+    <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-16 reveal">{t.proof.label}</p>
 
-      <h2 class="font-display font-800 text-[clamp(2rem,5vw,3.5rem)] leading-tight tracking-tight reveal d1">
-        {t.proof.lead}
-      </h2>
-
-      <p class="text-mute text-[15px] leading-loose mt-8 reveal d2">
-        {t.proof.situation}
-      </p>
-
-      <p class="text-[15px] font-semibold mt-12 reveal d3">
-        {t.proof.action}
-      </p>
-
-      <div class="border-l-2 border-fg pl-5 mt-6 space-y-1 reveal d3">
-        <p class="text-[15px] leading-relaxed">{t.proof.quote1}</p>
-        <p class="text-[15px] leading-relaxed">{t.proof.quote2}</p>
-      </div>
-
-      <p class="text-[15px] leading-relaxed mt-12 reveal d4">
-        {t.proof.result}
-      </p>
-
-      <p class="text-mute text-[12px] mt-12 reveal d4">
-        {t.proof.disclaimer}
-      </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-px border border-rule bg-rule">
+      {cases.map((c, i) => (
+        <div class={`bg-bg px-8 py-10 reveal ${i > 0 ? `d${Math.min(i, 4)}` : ''}`}>
+          <p class="text-[11px] font-semibold uppercase tracking-[.2em] text-mute mb-6">
+            {c.industry}
+          </p>
+          <p class="text-mute text-[14px] leading-relaxed mb-6">
+            {c.problem}
+          </p>
+          <p class="text-[15px] font-semibold leading-snug">
+            {c.result}
+          </p>
+        </div>
+      ))}
     </div>
+
+    <p class="text-mute text-[12px] mt-8 reveal d4">{t.proof.disclaimer}</p>
   </div>
 </section>

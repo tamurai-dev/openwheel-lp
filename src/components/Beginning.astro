@@ -2,23 +2,26 @@
 interface Props { t: any; }
 const { t } = Astro.props;
 ---
-<section class="py-32 md:py-48 px-6">
+<section id="contact" class="py-32 md:py-48 px-6 border-t border-rule">
   <div class="max-w-[1120px] mx-auto">
     <h2 class="font-display font-800 text-[clamp(3rem,9vw,7rem)] leading-[0.95] tracking-tight reveal">
       {t.cta.line}
     </h2>
-    <div class="flex items-center gap-6 mt-10 reveal d1">
+    <p class="text-mute text-[15px] mt-6 reveal d1">{t.cta.contactNote}</p>
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-10 reveal d1">
       <a
-        href="https://github.com/tamurai/openwheel"
-        class="text-[13px] font-semibold tracking-wide border-b border-fg pb-0.5 hover:text-mute hover:border-mute transition-colors"
+        href={t.cta.contactHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[14px] font-semibold tracking-wide bg-fg text-bg px-6 py-3 rounded-full hover:opacity-80 transition-opacity"
       >
-        {t.cta.github}
+        {t.cta.contactLabel}
       </a>
       <a
-        href="https://docs.anthropic.com/en/docs/agents/managed-agents"
+        href={t.cta.demoHref}
         class="text-[13px] tracking-wide text-mute hover:text-fg transition-colors"
       >
-        {t.cta.docs}
+        {t.cta.demoLabel} ↑
       </a>
     </div>
   </div>
