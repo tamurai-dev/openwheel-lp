@@ -1,0 +1,37 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+const pairs = t.questions.left.map((l: string, i: number) => ({
+  left: l,
+  right: t.questions.right[i],
+}));
+---
+<section class="py-32 md:py-44 px-6 bg-surface text-on-surface">
+  <div class="max-w-[960px] mx-auto">
+    <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-on-surface/40 mb-16 reveal">{t.questions.label}</p>
+
+    <div class="grid md:grid-cols-2 gap-16 md:gap-8">
+      <div>
+        <p class="text-on-surface/30 text-[12px] font-semibold uppercase tracking-[.2em] mb-8 reveal">{t.questions.leftTitle}</p>
+        <div class="flex flex-col gap-5">
+          {pairs.map((p: { left: string }, i: number) => (
+            <p class={`text-on-surface/25 text-[15px] leading-relaxed line-through decoration-on-surface/15 reveal ${i > 0 ? `d${Math.min(i, 4)}` : ''}`}>
+              {p.left}
+            </p>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p class="text-on-surface/70 text-[12px] font-semibold uppercase tracking-[.2em] mb-8 reveal">{t.questions.rightTitle}</p>
+        <div class="flex flex-col gap-5">
+          {pairs.map((p: { right: string }, i: number) => (
+            <p class={`text-on-surface text-[15px] leading-relaxed font-medium reveal ${i > 0 ? `d${Math.min(i, 4)}` : ''}`}>
+              {p.right}
+            </p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+
+const sources = [
+  { name: t.saas.s1name, data: t.saas.s1data },
+  { name: t.saas.s2name, data: t.saas.s2data },
+  { name: t.saas.s3name, data: t.saas.s3data },
+];
+
+const personas = [
+  { label: t.saas.persona1label, body: t.saas.persona1body },
+  { label: t.saas.persona2label, body: t.saas.persona2body },
+];
+---
+<section class="py-32 md:py-44 px-6 border-t border-rule">
+  <div class="max-w-[1120px] mx-auto">
+    <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-mute mb-10 reveal">{t.saas.label}</p>
+    <h2 class="font-display font-800 text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-tight max-w-[640px] reveal d1">
+      {t.saas.title}
+    </h2>
+    <p class="text-mute text-[15px] leading-relaxed mt-4 max-w-[520px] reveal d2">
+      {t.saas.description}
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-px mt-16 border border-rule bg-rule reveal d3">
+      {sources.map((s) => (
+        <div class="bg-bg px-8 py-8">
+          <p class="font-display font-700 text-[15px] tracking-tight mb-2">{s.name}</p>
+          <p class="text-mute text-[13px] leading-relaxed">{s.data}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-20 reveal d4">
+      <h3 class="font-display font-700 text-[clamp(1.2rem,2.5vw,1.6rem)] tracking-tight mb-8">
+        {t.saas.personaTitle}
+      </h3>
+      <div class="grid md:grid-cols-2 gap-8">
+        {personas.map((p) => (
+          <div class="border-l-2 border-rule pl-6">
+            <p class="text-[12px] font-semibold uppercase tracking-[.15em] text-mute mb-2">{p.label}</p>
+            <p class="text-[15px] leading-relaxed">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

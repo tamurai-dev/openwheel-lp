@@ -13,8 +13,6 @@ const isJa = t.lang === "ja";
       class={`font-display font-800 text-fg text-center leading-[1.15] tracking-[-0.02em] mb-10 hero-in ${isJa ? "text-[clamp(1.4rem,3.8vw,2.2rem)]" : "text-[clamp(1.6rem,4.5vw,2.6rem)]"}`}
     >
       {t.chat.heading}
-      <br />
-      {t.chat.heading2}
     </h2>
 
     <div id="chat-hint" class="flex flex-col items-center mb-2 hero-in hero-in-d1">
@@ -97,9 +95,9 @@ const isJa = t.lang === "ja";
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           {t.chat.stepDone}
         </div>
-        <div class="bg-white border border-rule text-fg text-[13px] font-mono px-4 py-3 rounded-lg overflow-x-auto">
-          <code>{t.chat.snippet}</code>
-        </div>
+        <p class="text-fg text-[14px] leading-relaxed px-4 py-3 bg-white border border-rule rounded-lg">
+          {t.chat.summary}
+        </p>
       </div>
       <a
         id="chat-cta"
